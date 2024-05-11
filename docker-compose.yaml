@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD='02062002'
+    ports:
+      - "8081:8091"
+    depends_on:
+      - postgresDatabase
+    restart: unless-stopped
+
+  postgresDatabase:
+    container_name: nurs_spring
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: '02062002'
+      POSTGRES_DB: postgres
+      PGDATA: /data/postgres
+#        volumes:
+#      - postgresDatabase:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+#volumes:
+#  postgresDatabase: /data/

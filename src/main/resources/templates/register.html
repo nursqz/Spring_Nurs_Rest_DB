@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .centerForm {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .sign-up-wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 360px;
+        }
+        .sign-up {
+            text-align: left;
+        }
+        .sign-up-title {
+            text-align: center;
+            color: orange;
+        }
+        .input-box {
+            margin-bottom: 20px;
+        }
+        .input-box span {
+            color: orange;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .btn-outline-warning {
+            border: 1px solid #ffc107
+            color: #ffc107;
+        }
+        .btn-outline-info {
+            border: 1px solid #17a2b8;
+            color: #17a2b8;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+<div class="centerForm" style="text-align: center">
+    <div class="success">
+    </div>
+    <div class="sign-up-wrapper">
+        <div class="sign-up">
+            <h2 class="sign-up-title" style="color: orange">Register</h2> <br>
+            <form action="/register" method="POST">
+                <div class="input-box">
+                    <span style="color: orange">Name: </span>
+                    <input type="text" name="UserName" class="input" required placeholder="Введите имя">
+                </div> <br>
+                <div class="input-box">
+                    <span style="color: orange">Email: </span>
+                    <input type="email" name="UserEmail" class="input" required placeholder="Введите email">
+                </div> <br>
+                <div class="input-box">
+                    <span style="color: orange">Password: </span>
+                    <input type="password" name="Password" class="input" required placeholder="Введите пароль">
+                </div> <br>
+                <div class="input-box">
+                    <button type="submit" class="btn btn-outline-warning">Register</button>
+                </div>
+                <a class="btn btn-outline-info" href="login">Уже есть аккаунт?</a>
+            </form>
+            <span th:if="${error}" th:text="${error}" style="color: red;"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
